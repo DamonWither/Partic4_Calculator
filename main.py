@@ -30,15 +30,18 @@ class PaintCalculator:
         price = self.base_price * detail_coeff * color_coeff
         return price
 
-    class PaintApp:
-        def __init__(self):
+class PaintApp:
+    def __init__(self):
             self.calculator = PaintCalculator()
 
-        def run(self):
-            print("=== Калькулятор стоимости покраски ===")
-            detail = input("Введите наименование детали (бампер, крыло, капот, крыша, дверь): ").strip()
-            color = input("Введите цвет (белый, черный, красный, синий, металлик): ").strip()
+    def run(self):
+        print("=== Калькулятор стоимости покраски ===")
+        detail = input("Введите наименование детали (бампер, крыло, капот, крыша, дверь): ").strip()
+        color = input("Введите цвет (белый, черный, красный, синий, металлик): ").strip()
 
-            print(f"\nСтоимость покраски детали '{detail}' цвета '{color}' составляет: {price:.2f} руб.\n")
+        price = self.calculator.calculate_price(detail, color)
+        print(f"\nСтоимость покраски детали '{detail}' цвета '{color}' составляет: {price:.2f} руб.\n")
+
 if __name__ == "__main__":
-    pass
+    app = PaintApp()
+    app.run()
